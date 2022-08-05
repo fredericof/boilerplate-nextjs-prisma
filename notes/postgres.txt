@@ -1,0 +1,16 @@
+psql --version
+
+sudo -u postgres createuser denunciapix
+sudo -u postgres createdb denunciapix
+sudo -u postgres psql
+
+>postgres=# \du #Show List of Roles#
+>postgres=# \l #Show List of Databases#
+>postgres=# alter user denunciapix with encrypted password 'denunciapix123';
+>postgres=# grant all privileges on database denunciapix to denunciapix;
+>postgres=# \l
+
+ou
+
+docker run --rm --name postgresql -p 5432:5432 -e POSTGRES_USER=denunciapix -e POSTGRES_PASSWORD=denunciapix -e POSTGRES_DB=denunciapix -d postgres:latest
+docker exec -it postgresql psql -d denunciapix -U denunciapix
